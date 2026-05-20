@@ -5,15 +5,15 @@ cat << 'EOF' > ~/kill_appium.sh
 
 PORT=4723
 
-# Находим PID процесса на порту 4723
+# Find PID of the process running on port 4723
 PID=$(lsof -t -i:$PORT)
 
 if [ -z "$PID" ]; then
-    echo " На порту $PORT ничего не запущено."
+    echo " No process found running on port $PORT."
 else
-    echo " Найдена запущенная node/appium (PID: $PID). Убиваю..."
+    echo " Found process running on port $PORT (PID: $PID). Killing..."
     kill -9 $PID
-    echo " Done! Порт $PORT свободен."
+    echo " Done! Port $PORT is now free."
 fi
 EOF
 ```
